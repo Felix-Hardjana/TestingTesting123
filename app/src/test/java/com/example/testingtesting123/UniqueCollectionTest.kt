@@ -22,8 +22,9 @@ class UniqueCollectionTest {
         var newSize = collection.size()
         collection.addItem(Item("item2"))
 
+        assert(newSize == origSize + 1 && collection.get(newSize - 1) == Item("Item")) {"Add item failed"}
         assert(origSize == 0 && newSize == 1){
-            "Didn't add"
+            "Didn't add item"
         }
     }
 
@@ -32,9 +33,13 @@ class UniqueCollectionTest {
     @Test
     fun addUniqueItem() {
 
+        val collectionSize = collection.size()
+
         collection.addItem(Item("item1"))
         collection.addItem(Item("item1"))
         collection.addItem(Item("item2"))
+
+        assert(collection.get(0) == Item("item 1"))
 
         assert(collection.size() == 2) {
             "Don't have duplicate"
