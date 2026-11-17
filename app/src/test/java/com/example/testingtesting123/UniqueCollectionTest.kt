@@ -17,12 +17,29 @@ class UniqueCollectionTest {
     @Test
     fun addAnItem() {
 
+        var origSize = collection.size()
+        collection.addItem(Item("item1"))
+        var newSize = collection.size()
+        collection.addItem(Item("item2"))
+
+        assert(origSize == 0 && newSize == 1){
+            "Didn't add"
+        }
     }
 
     // TODO 2: Write a test to ensure that only unique items can be added to the collection
     // Uniqueness is determined by the Item.name property, which is set via the constructor
     @Test
     fun addUniqueItem() {
+
+        collection.addItem(Item("item1"))
+        collection.addItem(Item("item1"))
+        collection.addItem(Item("item2"))
+
+        assert(collection.size() == 2) {
+            "Don't have duplicate"
+        }
+
 
     }
 
